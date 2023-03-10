@@ -1,3 +1,28 @@
+"""
+Grade: Total=89/90
+* Backend: 10
+* Home/About/Pages Routes: 10
+* Sign up/in/out: 10
+* Upload: 5
+* Navigation Bar: 5
+* Wiki pages: 10
+* Unit Tests and Comments: 35
+* Comments: 5
+* Bad Style Penalty: -1
+
+Style comments:
+* Use the three-double-quote format instead of # for documentation comments
+  See https://google.github.io/styleguide/pyguide.html#381-docstrings
+
+* Avoid adding too many blank lines. Refer to https://peps.python.org/pep-0008/#blank-lines
+
+* Use a more structured way to signal errors. https://google.github.io/styleguide/pyguide.html#24-exceptions
+
+* Remove TODO comments that have been completed. https://google.github.io/styleguide/pyguide.html#312-todo-comments
+  Generally clean up the comments before submitting.
+
+"""
+
 from hashlib import sha256
 from google.cloud import storage
 from flask_login import current_user
@@ -37,6 +62,7 @@ class Backend:
 
         return page_content
 
+    # This is some great extra functionality. Still needs to have unit test ;)
     def get_author(self, name):
         # Function for getting an author
         
@@ -139,6 +165,11 @@ class Backend:
         # If not, it will return.
         if not self._check_valid(username, password): 
             return 'INVALID'
+            # It is good to use structured ways to signal errors to the caller
+            # instead of returning strings to indicate various states (valid, invalid)
+            # Eg: could return true when valid, and raise an Exception when invalid
+            # Eg: could also create an enum (which is more strongly typed than string)
+            #     to denote the state. 
         
         # Object from user/pass bucket.
         bucket = self._get_userpass_bucket()

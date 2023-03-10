@@ -206,6 +206,8 @@ class TestBackend(unittest.TestCase):
 
         # UNIT TESTS for user_list #
 
+   # Great job adding these tests too. Ideally, they should be located along with the
+   # py code (eg: it could be in user_list_test.py)
     def test_user_list_start_queue(self):
         # Instance of User_List
         user_list = User_List()
